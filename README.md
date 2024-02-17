@@ -1,11 +1,11 @@
 # Torizon for WSL 2 Cookbook
 
-<center>
+<p align="center">
     <img
         src="https://docs.toradex.com/114682-torizonloveswsl2512.png?v=1"
         alt="Torizon 💘 WSL 2"
         width="200" />
-</center>
+</p>
 
 This cookbook provides a collection of recipes to help you get started with Torizon on Windows Subsystem for Linux 2 (WSL 2).
 
@@ -15,7 +15,7 @@ This was especially designed for have an already set up development environment 
 
 - Quecto Project;
 
-<center>
+<p align="center">
     <img
         src="https://docs.toradex.com/114683-quectowithbackgroundsmall.png"
         alt="This is a Quecto Project based cookbook"
@@ -24,4 +24,4 @@ This was especially designed for have an already set up development environment 
         src="https://docs.toradex.com/114684-nostresslogosmall.png"
         alt="Torizon 💘 WSL 2"
         width="200" />
-</center>
+</p>
