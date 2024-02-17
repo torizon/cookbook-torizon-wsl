@@ -1,0 +1,21 @@
+{
+    "name": "Torizon-WSL-2",
+    "machine": "wsl-amd64",
+    "arch": "linux/amd64",
+    "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 0,
+        "build": 0
+    },
+    "maxImgSize": 1500,
+    "searchForRecipesOn": [
+        "../gaia/cookbook",
+        "./cookbook"
+    ],
+    "excludeRecipes": [
+        "recipes-bsp",
+        "recipes-common",
+        "recipes-kernel"
+    ]
+}

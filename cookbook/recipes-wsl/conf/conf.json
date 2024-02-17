@@ -1,0 +1,11 @@
+{
+    "name": "wsl-conf",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/amd64"
+    ],
+    "deployRecipes": [
+        "wslConf.ts"
+    ]
+}

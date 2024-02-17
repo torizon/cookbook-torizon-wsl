@@ -1,0 +1,31 @@
+{
+    "name": "debian-sid",
+    "type": "rootfs",
+    "priority": 1,
+    "support": [
+        "linux/amd64"
+    ],
+    "targetDeps": [
+        "jq",
+        "sudo",
+        "iputils-ping",
+        "nmap",
+        "avahi-utils",
+        "file",
+        "sshpass",
+        "net-tools",
+        "iproute2",
+        "wayland-protocols",
+        "libwayland-dev",
+        "libwayland-egl-backend-dev",
+        "libegl1-mesa-dev",
+        "libgles2-mesa-dev",
+        "libncursesw5-dev",
+        "libncursesw6",
+        "neofetch"
+    ],
+    "bundleRecipes": [
+        "tar.ts"
+    ],
+    "merge": true
+}
