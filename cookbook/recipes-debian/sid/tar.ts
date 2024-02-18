@@ -56,22 +56,11 @@ execSync(
         env: process.env
     })
 
-// remove the X11 infinite loop
-execSync(
-    `echo ${USER_PASSWD} | sudo -E -S bash -c "` +
-    `rm -rf ${IMAGE_MNT_ROOT}/usr/bin/X11"`,
-    {
-        shell: "/bin/bash",
-        stdio: "inherit",
-        encoding: "utf-8",
-        env: process.env
-    })
-
 // FIXME: this will remove with exit code, but should be ok
 execSync(
     `echo ${USER_PASSWD} | sudo -E -S bash -c "` +
     `cd ${IMAGE_MNT_ROOT} && ` +
-    `shopt -s dotglob; tar -cvphf ${IMAGE_PATH}.tar * || true"`,
+    `shopt -s dotglob; tar -cvpf ${IMAGE_PATH}.tar * || true"`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
