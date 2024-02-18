@@ -15,7 +15,9 @@
     ],
     "excludeRecipes": [
         "recipes-bsp",
-        "recipes-common",
-        "recipes-kernel"
+        "recipes-kernel",
+        "fstab",
+        "systemd",
+        "userlogin"
     ]
 }

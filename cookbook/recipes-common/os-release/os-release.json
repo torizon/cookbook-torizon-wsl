@@ -1,0 +1,18 @@
+{
+    "name": "os-release",
+    "type": "config",
+    "priority": 1,
+    "support": [
+        "linux/amd64"
+    ],
+    "env": {
+        "OS_RELEASE_PRETTY_NAME": "TorizonCore for WSL 2",
+        "OS_RELEASE_NAME": "TorizonCore",
+        "OS_RELEASE_ID": "torizon",
+        "OS_RELEASE_VERSION_CODENAME": "torizonsoft",
+        "OS_RELEASE_HOME_URL": "https://www.torizon.io",
+        "OS_RELEASE_BUG_REPORT_URL": "https://github.com/commontorizon/cookbook-torizon-wsl/issues",
+        "OS_RELEASE_SUPPORT_URL": "https://community.toradex.com"
+    },
+    "merge": true
+}
