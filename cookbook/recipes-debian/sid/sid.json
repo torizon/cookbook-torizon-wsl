@@ -29,7 +29,10 @@
         "libgles2-mesa-dev",
         "libncursesw5-dev",
         "libncursesw6",
-        "neofetch"
+        "neofetch",
+        "openssl",
+        "nano",
+        "bash-completion"
     ],
     "bundleRecipes": [
         "tar.ts"
