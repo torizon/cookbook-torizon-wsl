@@ -8,7 +8,7 @@
         "patch": 0,
         "build": 0
     },
-    "maxImgSize": 2024,
+    "maxImgSize": 4096,
     "searchForRecipesOn": [
         "../gaia/cookbook",
         "./cookbook"
