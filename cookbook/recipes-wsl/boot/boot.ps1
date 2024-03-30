@@ -45,6 +45,9 @@ if ($null -eq $_user) {
         # configured, we need to have a way to tell to Windows this
         mkdir -p /mnt/c/Users/Public/.torizon
         touch /mnt/c/Users/Public/.torizon/.configured
+
+        # the first configuration we exit for the wizard to finish
+        exit 0
     } else {
         Write-Host -ForegroundColor Red "Error: User not added?"
         exit 69
