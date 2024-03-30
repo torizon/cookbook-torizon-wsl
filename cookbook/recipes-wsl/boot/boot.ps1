@@ -42,6 +42,14 @@ if ($null -eq $_user) {
         # and pass the ownership of the home directory to the user
         chown -R ${_user}:$_user /home/$_user
 
+        # add the user to the /etc/wsl.conf
+        Install-Module -Name PsIni -Force
+        Import-Module PsIni
+        $_wslConf = Get-IniContent /etc/wsl.conf
+        $_wslConf['user'].default = $_user
+        Remove-Item -Force /etc/wsl.conf
+        $_wslConf | Out-IniFile -FilePath /etc/wsl.conf
+
         # configured, we need to have a way to tell to Windows this
         mkdir -p /mnt/c/Users/Public/.torizon
         touch /mnt/c/Users/Public/.torizon/.configured
