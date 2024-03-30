@@ -42,6 +42,13 @@ if ($null -eq $_user) {
         # and pass the ownership of the home directory to the user
         chown -R ${_user}:$_user /home/$_user
 
+        # change the default shell to bash
+        chsh -s /bin/bash $_user
+
+        # add the /usr/sbin/service to the sudoers
+        # we need this do be able to start docker without issues
+        Write-Ouput "$_user ALL=(ALL) NOPASSWD: /usr/sbin/service" >> /etc/sudoers
+
         # add the user to the /etc/wsl.conf
         Install-Module -Name PsIni -Force
         Import-Module PsIni
@@ -65,7 +72,7 @@ if ($null -eq $_user) {
 # start docker service ??
 /usr/sbin/service docker status
 if ($LASTEXITCODE -ne 0) {
-    /usr/sbin/service docker start
+    sudo /usr/sbin/service docker start
 }
 
 # change the user
