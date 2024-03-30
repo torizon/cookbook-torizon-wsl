@@ -33,7 +33,9 @@
         "openssl",
         "nano",
         "bash-completion",
-        "wget"
+        "wget",
+        "git",
+        "bind9-dnsutils"
     ],
     "bundleRecipes": [
         "tar.ts"
