@@ -49,6 +49,10 @@ if ($null -eq $_user) {
         # we need this do be able to start docker without issues
         Write-Output "$_user ALL=(ALL) NOPASSWD: /usr/sbin/service" >> /etc/sudoers
 
+        # add the cap to ping
+        chmod 4711 /usr/bin/ping
+        setcap cap_net_raw+ep /usr/bin/ping
+
         # add the user to the /etc/wsl.conf
         Install-Module -Name PsIni -Force
         Import-Module PsIni
