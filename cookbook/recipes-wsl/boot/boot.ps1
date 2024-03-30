@@ -47,7 +47,7 @@ if ($null -eq $_user) {
 
         # add the /usr/sbin/service to the sudoers
         # we need this do be able to start docker without issues
-        Write-Ouput "$_user ALL=(ALL) NOPASSWD: /usr/sbin/service" >> /etc/sudoers
+        Write-Output "$_user ALL=(ALL) NOPASSWD: /usr/sbin/service" >> /etc/sudoers
 
         # add the user to the /etc/wsl.conf
         Install-Module -Name PsIni -Force
