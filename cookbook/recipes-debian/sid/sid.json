@@ -32,7 +32,8 @@
         "neofetch",
         "openssl",
         "nano",
-        "bash-completion"
+        "bash-completion",
+        "wget"
     ],
     "bundleRecipes": [
         "tar.ts"
