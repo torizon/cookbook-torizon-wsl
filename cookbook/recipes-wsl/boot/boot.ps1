@@ -75,8 +75,8 @@ if ($LASTEXITCODE -ne 0) {
     sudo /usr/sbin/service docker start
 }
 
-# change the user
+# still having controll to the flow
 Set-Location /home/$_user
-sudo -u $_user /bin/bash --noprofile -i
+/bin/bash
 
 exit 0

@@ -28,7 +28,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 // copy the boot script to the rootfs
 execSync(
     `echo ${USER_PASSWD} | sudo -E -S ` +
-    `cp ${_path}/boot.ps1 ${IMAGE_MNT_ROOT}/bin/`,
+    `cp ${_path}/profile ${IMAGE_MNT_ROOT}/etc/profile`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
@@ -39,7 +39,7 @@ execSync(
 // give the boot script execution permission
 execSync(
     `echo ${USER_PASSWD} | sudo -E -S ` +
-    `chmod +x ${IMAGE_MNT_ROOT}/bin/boot.ps1`,
+    `chmod +x ${IMAGE_MNT_ROOT}/etc/profile`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
