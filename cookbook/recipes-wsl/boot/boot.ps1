@@ -41,6 +41,10 @@ if ($null -eq $_user) {
 
         # and pass the ownership of the home directory to the user
         chown -R ${_user}:$_user /home/$_user
+
+        # configured, we need to have a way to tell to Windows this
+        mkdir -p /mnt/c/Users/Public/.torizon
+        touch /mnt/c/Users/Public/.torizon/.configured
     } else {
         Write-Host -ForegroundColor Red "Error: User not added?"
         exit 69
