@@ -13,7 +13,7 @@ This was especially designed for have an already set up development environment 
 
 ## Prerequisites
 
-- Quecto Project;
+- [Quecto Project Gaia Core](https://github.com/quectoproject/gaia);
 
 <p align="center">
     <img
