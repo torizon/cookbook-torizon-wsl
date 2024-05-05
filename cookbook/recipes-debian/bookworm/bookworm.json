@@ -1,17 +1,10 @@
 {
-    "name": "debian-sid",
+    "name": "debian-bookworm",
     "type": "rootfs",
     "priority": 1,
     "support": [
         "linux/amd64"
     ],
-    "ref": {
-        "linux/amd64": "acf606d9f8b010b8997897c8c0ba065a93fb9f65"
-    },
-    "checksum": {
-        "linux/amd64": "33701e0b39b24dbe415de7be80b34ab079d1c02bc18949a82253b4e413df31c7"
-    },
-    "file": "bookworm/rootfs.tar.xz",
     "targetDeps": [
         "jq",
         "sudo",
