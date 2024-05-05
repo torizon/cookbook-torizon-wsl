@@ -5,7 +5,7 @@
     "version": {
         "major": 0,
         "minor": 0,
-        "patch": 3,
+        "patch": 4,
         "build": 0
     },
     "maxImgSize": 4096,
@@ -16,8 +16,11 @@
     "excludeRecipes": [
         "recipes-bsp",
         "recipes-kernel",
+        "recipes-init",
         "fstab",
         "systemd",
-        "userlogin"
+        "userlogin",
+        "hostname",
+        "simple-plash"
     ]
 }
