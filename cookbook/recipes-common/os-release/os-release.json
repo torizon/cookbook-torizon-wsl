@@ -6,7 +6,7 @@
         "linux/amd64"
     ],
     "env": {
-        "OS_RELEASE_PRETTY_NAME": "TorizonCore for WSL 2",
+        "OS_RELEASE_PRETTY_NAME": "Torizon Development Environment for WSL 2",
         "OS_RELEASE_NAME": "TorizonCore",
         "OS_RELEASE_ID": "torizon",
         "OS_RELEASE_VERSION_CODENAME": "torizonsoft",
