@@ -37,7 +37,7 @@ if ($null -eq $_user) {
         usermod -aG docker $_user
 
         # create the .bashrc
-        cp /etc/bashrc.template /home/$_user/.bashrc
+        cp /etc/bash.bashrc /home/$_user/.bashrc
 
         # and pass the ownership of the home directory to the user
         chown -R ${_user}:$_user /home/$_user
@@ -66,7 +66,7 @@ if ($null -eq $_user) {
         touch /mnt/c/Users/Public/.torizon/.configured
 
         # the first configuration we exit for the wizard to finish
-        exit 0
+        exit 1
     } else {
         Write-Host -ForegroundColor Red "Error: User not added?"
         exit 69
@@ -81,6 +81,3 @@ if ($LASTEXITCODE -ne 0) {
 
 # still having controll to the flow
 Set-Location /home/$_user
-/bin/bash
-
-exit 0
