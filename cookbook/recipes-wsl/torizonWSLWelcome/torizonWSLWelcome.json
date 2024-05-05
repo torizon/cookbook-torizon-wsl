@@ -5,8 +5,8 @@
     "support": [
         "linux/amd64"
     ],
-    "source": "https://github.com/commontorizon/torizonWSLWelcome/releases/download/0.0.1/",
-    "file": "Torizon-WSL2-Welcome-0.0.1.zip",
+    "source": "https://github.com/commontorizon/torizonWSLWelcome/releases/download/0.0.2/",
+    "file": "Torizon-WSL2-Welcome-0.0.2.zip",
     "hostDeps": [
         "unzip"
     ],
@@ -15,7 +15,11 @@
         "mesa-utils",
         "x11-xserver-utils",
         "libxkbcommon-x11-0",
-        "xkb-data"
+        "xkb-data",
+        "libfreetype6",
+        "libgbm1",
+        "libinput10",
+        "libxkbcommon0"
     ],
     "fetchRecipes": [
         "fetch.ts"
