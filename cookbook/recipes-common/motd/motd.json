@@ -1,0 +1,12 @@
+{
+    "name": "motd",
+    "type": "package",
+    "priority": 1,
+    "support": [
+        "linux/amd64"
+    ],
+    "env": {
+        "MOTD_MESSAGE": "Welcome to Torizon Development WSL Distro!"
+    },
+    "merge": true
+}
