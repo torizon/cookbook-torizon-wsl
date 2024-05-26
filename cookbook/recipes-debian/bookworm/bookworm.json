@@ -22,7 +22,6 @@
         "libgles2-mesa-dev",
         "libncursesw5-dev",
         "libncursesw6",
-        "neofetch",
         "openssl",
         "nano",
         "bash-completion",
