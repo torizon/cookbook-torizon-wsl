@@ -1,0 +1,12 @@
+{
+    "name": "fastfetch",
+    "type": "config",
+    "priority": 1,
+    "support": [
+        "linux/amd64"
+    ],
+    "merge": true,
+    "patchRecipes": [
+        "patch.ts"
+    ]
+}
