@@ -5,7 +5,7 @@
     "version": {
         "major": 0,
         "minor": 0,
-        "patch": 4,
+        "patch": 5,
         "build": 0
     },
     "maxImgSize": 4096,
@@ -21,6 +21,7 @@
         "systemd",
         "userlogin",
         "hostname",
-        "simple-plash"
+        "simple-splash",
+        "neofetch"
     ]
 }
