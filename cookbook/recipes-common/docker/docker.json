@@ -1,0 +1,13 @@
+{
+    "name": "docker",
+    "type": "config",
+    "priority": 1,
+    "support": [
+        "linux/amd64",
+        "linux/arm64"
+    ],
+    "afterDeployRecipes": [
+        "wslsock.ts"
+    ],
+    "merge": true
+}
