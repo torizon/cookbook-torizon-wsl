@@ -5,8 +5,8 @@
     "support": [
         "linux/amd64"
     ],
-    "source": "https://github.com/commontorizon/torizonWSLWelcome/releases/download/0.0.2/",
-    "file": "Torizon-WSL2-Welcome-0.0.2.zip",
+    "source": "https://github.com/commontorizon/torizonWSLWelcome/releases/download/0.0.3/",
+    "file": "Torizon-WSL2-Welcome-0.0.3.zip",
     "hostDeps": [
         "unzip"
     ],

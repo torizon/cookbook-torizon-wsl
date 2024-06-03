@@ -1,7 +1,7 @@
 # /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
 # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
 
-echo "Welcome to the Torizon WSL 2 v0.0.5"
+echo "Welcome to the Torizon WSL 2 v0.0.6"
 
 export PATH
 
@@ -30,10 +30,13 @@ if [ -d /etc/profile.d ]; then
   unset i
 fi
 
+# the Torizon WSL Utils use slint
+export SLINT_STYLE="fluent-dark"
+
 # execute the Torizon WSL2 specific script
 boot.ps1
 
-# check the return code from the last command
+# check the return code from the boot
 if [ $? -eq 0 ] ; then
   echo "Success"
 else
@@ -41,3 +44,6 @@ else
   wsl.exe -t Torizon
   exit
 fi
+
+# make sure to be using the shared docker socket
+export DOCKER_HOST=unix:///mnt/wsl/docker.sock
