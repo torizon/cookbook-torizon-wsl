@@ -1,0 +1,33 @@
+{
+    "name": "torizon-emulator-manager",
+    "type": "application",
+    "priority": 0,
+    "support": [
+        "linux/amd64"
+    ],
+    "source": "https://github.com/commontorizon/torizonEmulatorManager/releases/download/0.0.22/",
+    "files": [
+        "docker-compose.yml",
+        "torizon-emulator-manager"
+    ],
+    "hostDeps": [
+        "unzip"
+    ],
+    "targetDeps": [
+        "libfontconfig1",
+        "mesa-utils",
+        "x11-xserver-utils",
+        "libxkbcommon-x11-0",
+        "xkb-data",
+        "libfreetype6",
+        "libgbm1",
+        "libinput10",
+        "libxkbcommon0"
+    ],
+    "fetchRecipes": [
+        "fetch.ts"
+    ],
+    "deployRecipes": [
+        "deploy.ts"
+    ]
+}
