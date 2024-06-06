@@ -44,6 +44,3 @@ else
   wsl.exe -t Torizon
   exit
 fi
-
-# make sure to be using the shared docker socket
-export DOCKER_HOST=unix:///mnt/wsl/docker.sock
