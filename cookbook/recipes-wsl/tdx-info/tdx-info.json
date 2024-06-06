@@ -1,0 +1,16 @@
+{
+    "name": "tdx-info",
+    "type": "application",
+    "priority": 0,
+    "support": [
+        "linux/amd64"
+    ],
+    "source": "https://raw.githubusercontent.com/commontorizon/tdx-info/568622f7447b85a153fa7ab73d4fdb5cd3403d70",
+    "file": "tdx-info",
+    "fetchRecipes": [
+        "fetch.ts"
+    ],
+    "deployRecipes": [
+        "deploy.ts"
+    ]
+}

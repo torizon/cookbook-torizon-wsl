@@ -39,6 +39,9 @@ if ($null -eq $_user) {
         # create the .bashrc
         cp /etc/bash.bashrc /home/$_user/.bashrc
 
+        # make sure that /bin/sh is pointing to bash
+        ln -sf /bin/bash /bin/sh
+
         # and pass the ownership of the home directory to the user
         chown -R ${_user}:$_user /home/$_user
 
@@ -47,7 +50,11 @@ if ($null -eq $_user) {
 
         # add the /usr/sbin/service to the sudoers
         # we need this do be able to start docker without issues
-        Write-Output "$_user ALL=(ALL) NOPASSWD: /usr/sbin/service" >> /etc/sudoers
+        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /usr/sbin/service" >> /etc/sudoers
+
+        # add the /opt/telemetry/telemetry to the sudoers
+        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/telemetry/telemetry" >> /etc/sudoers
+        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /usr/bint/tdx-info" >> /etc/sudoers
 
         # add the cap to ping
         chmod 4711 /usr/bin/ping
