@@ -5,7 +5,7 @@
 # then deploy the new files
 ##
 
-$version = "v0.0.10-rc7"
+$version = "v0.0.11-rc8"
 
 try {
     # 1. Check if there is a new version

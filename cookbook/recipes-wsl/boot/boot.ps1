@@ -56,6 +56,7 @@ if ($null -eq $_user) {
         Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/telemetry/telemetry" >> /etc/sudoers
         Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info" >> /etc/sudoers
         Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.ps1" >> /etc/sudoers
+        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket" >> /etc/sudoers
 
         # add the cap to ping
         chmod 4711 /usr/bin/ping

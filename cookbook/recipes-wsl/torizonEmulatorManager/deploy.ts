@@ -51,6 +51,18 @@ for (let _file of meta.files) {
         })
 }
 
+// copy the local file wslSocket
+const _file_path = `${_path}/wslSocket`
+execSync(
+    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `cp ${_file_path} ${IMAGE_MNT_ROOT}/opt/${meta.name}/wslSocket`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
 // create a symlink to the /usr/bin
 execSync(
     `echo ${USER_PASSWD} | sudo -E -S ` +
@@ -58,7 +70,8 @@ execSync(
     `ln -sf /opt/${meta.name}/torizon-emulator-manager /usr/bin/emulator && ` +
     `ln -sf /opt/${meta.name}/torizon-emulator-manager /usr/bin/torizon-emulator-manager && ` +
     `chmod +x /usr/bin/torizon-emulator-manager && ` +
-    `chmod +x /usr/bin/emulator` +
+    `chmod +x /usr/bin/emulator && ` +
+    `chmod +x /opt/${meta.name}/wslSocket` +
     `"`,
     {
         shell: "/bin/bash",
