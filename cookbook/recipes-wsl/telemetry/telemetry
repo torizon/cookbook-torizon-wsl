@@ -4,6 +4,15 @@
 # All rights reserved.
 #
 
+# make sure that we run this only once by boot
+if [ -f /tmp/telemetry.lock ]
+then
+    echo "E: Already ran"
+    exit 0
+else
+    touch /tmp/telemetry.lock
+fi
+
 # check if we have an internet connection
 # retry 3x
 for i in {1..3}
