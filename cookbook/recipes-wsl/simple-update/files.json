@@ -1,0 +1,19 @@
+{
+    "update": [
+        {
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/boot/boot.ps1",
+            "deploy": "/bin/boot.ps1",
+            "exec": true
+        },
+        {
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/telemetry/telemetry",
+            "deploy": "/opt/telemetry/telemetry",
+            "exec": true
+        },
+        {
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/profile/profile",
+            "deploy": "/opt/telemetry/telemetry",
+            "exec": true
+        }
+    ]
+}
