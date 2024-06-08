@@ -54,7 +54,8 @@ if ($null -eq $_user) {
 
         # add the /opt/telemetry/telemetry to the sudoers
         Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/telemetry/telemetry" >> /etc/sudoers
-        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /usr/bint/tdx-info" >> /etc/sudoers
+        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info" >> /etc/sudoers
+        Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.ps1" >> /etc/sudoers
 
         # add the cap to ping
         chmod 4711 /usr/bin/ping
