@@ -12,7 +12,7 @@
         },
         {
             "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/profile/profile",
-            "deploy": "/opt/telemetry/telemetry",
+            "deploy": "/etc/profile",
             "exec": true
         }
     ]

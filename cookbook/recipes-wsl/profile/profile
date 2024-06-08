@@ -40,7 +40,10 @@ boot.ps1
 # check the return code from the boot
 if [ $? -eq 0 ] ; then
   # run the telemetry in the background
-  sudo -E /opt/telemetry/telemetry > /dev/null 2>&1 & disown
+  sudo -E /opt/telemetry/telemetry > /var/log/telemetry.log 2>&1 & disown
+
+  # run the updater in the background
+  sudo -E /opt/updater/updater.ps1 > /var/log/updater.log 2>&1 & disown
 
   echo "Success"
 else

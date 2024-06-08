@@ -19,7 +19,7 @@ try {
 
     # 2. Get the list of files to download
     $reqFiles = Invoke-WebRequest -Uri `
-        "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/simple-update/files.json"
+        "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/simple-update/files"
     $files = $reqFiles.Content | ConvertFrom-Json
 
     # 3. Download the files and deploy them
