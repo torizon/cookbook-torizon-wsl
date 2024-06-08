@@ -1,7 +1,7 @@
 # /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
 # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
 
-echo "Welcome to the Torizon WSL 2 v0.0.9"
+echo "Welcome to the Torizon WSL 2 v0.0.10"
 
 export PATH
 
@@ -39,6 +39,15 @@ boot.ps1
 
 # check the return code from the boot
 if [ $? -eq 0 ] ; then
+  # check if there is the /mnt/wsl/docker.sock and is this is a socket file
+  if [ -S /mnt/wsl/docker.sock ]; then
+    echo "Docker is running!"
+  else
+    # create the symbolic link to the docker.sock for the other WSL2 instances
+    rm -rf /mnt/wsl/docker.sock
+    ln -sf /var/run/docker.sock /mnt/wsl/docker.sock
+  fi
+
   mkdir -p ~/.log
   # run the telemetry in the background
   sudo -E /opt/telemetry/telemetry > ~/.log/telemetry.log 2>&1 & disown

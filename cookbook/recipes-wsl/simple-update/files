@@ -14,6 +14,11 @@
             "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/profile/profile",
             "deploy": "/etc/profile",
             "exec": true
+        },
+        {
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/simple-update/updater.ps1",
+            "deploy": "/opt/updater/updater.ps1",
+            "exec": true
         }
     ]
 }
