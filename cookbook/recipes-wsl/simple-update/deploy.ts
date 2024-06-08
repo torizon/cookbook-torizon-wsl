@@ -39,7 +39,7 @@ execSync(
 // copy the boot script to the rootfs
 execSync(
     `echo ${USER_PASSWD} | sudo -E -S ` +
-    `cp ${_path}/boot.ps1 ${IMAGE_MNT_ROOT}/opt/updater/`,
+    `cp ${_path}/updater.ps1 ${IMAGE_MNT_ROOT}/opt/updater/`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
