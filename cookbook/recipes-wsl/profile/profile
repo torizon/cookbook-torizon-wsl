@@ -1,7 +1,7 @@
 # /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
 # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
 
-echo "Welcome to the Torizon WSL 2 v0.0.11"
+echo "Welcome to the Torizon WSL 2 v0.0.12"
 
 export PATH
 
@@ -32,7 +32,6 @@ fi
 
 # the Torizon WSL Utils use slint
 export SLINT_STYLE="fluent-dark"
-export WSL_DISTRO_NAME="Torizon"
 
 # execute the Torizon WSL2 specific script
 boot.ps1
@@ -53,6 +52,6 @@ if [ $? -eq 0 ] ; then
   echo "Success"
 else
   echo "Bye!"
-  wsl.exe -t Torizon
+  wsl.exe -t $WSL_DISTRO_NAME
   exit
 fi

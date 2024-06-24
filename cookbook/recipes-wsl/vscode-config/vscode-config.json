@@ -1,0 +1,11 @@
+{
+    "name": "vscode-config",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/amd64"
+    ],
+    "deployRecipes": [
+        "vscodeConf.ts"
+    ]
+}

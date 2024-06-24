@@ -58,6 +58,10 @@ if ($null -eq $_user) {
         Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.ps1" >> /etc/sudoers
         Write-Output "$_user ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket" >> /etc/sudoers
 
+        # vscode settings
+        mkdir -p /home/$_user/.vscode-server/data/Machine
+        cp /root/.vscode-server/data/Machine/settings.json /home/$_user/.vscode-server/data/Machine/settings.json
+
         # add the cap to ping
         chmod 4711 /usr/bin/ping
         setcap cap_net_raw+ep /usr/bin/ping

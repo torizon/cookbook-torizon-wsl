@@ -1,0 +1,6 @@
+{
+    "torizon.experimental": true,
+    "torizon.gpuPrefixRC": true,
+    "torizon.templatesBranch": "next",
+    "torizon.templatesTag": "next"
+}

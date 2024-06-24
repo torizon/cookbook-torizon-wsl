@@ -5,7 +5,7 @@
 # then deploy the new files
 ##
 
-$version = "v0.0.11-rc8"
+$version = "v0.0.12-rc9"
 
 try {
     # 1. Check if there is a new version
@@ -25,10 +25,13 @@ try {
     # 3. Download the files and deploy them
     foreach ($file in $files.update) {
         Write-Host "Downloading :: $($file.file)"
-        Invoke-WebRequest -Uri $file.file -OutFile $file.deploy
+
+        # parse the %user% to the actual user
+        $_fileDeployParsed = $file.deploy -replace "%user%", $env:USER
+        Invoke-WebRequest -Uri $file.file -OutFile $_fileDeployParsed
 
         if ($file.exec -eq $true) {
-            chmod +x $file.deploy
+            chmod +x $_fileDeployParsed
         }
     }
 }
