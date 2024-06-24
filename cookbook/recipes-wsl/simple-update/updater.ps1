@@ -1,5 +1,9 @@
 #!/usr/bin/env pwsh
 
+param(
+    [string]$User
+)
+
 ##
 # Check if there is a new version
 # then deploy the new files
@@ -28,11 +32,11 @@ try {
         Write-Host "Downloading :: $($file.file)"
 
         # parse the %user% to the actual user
-        $_fileDeployParsed = $file.deploy -replace "%user%", $env:USER
+        $_fileDeployParsed = $file.deploy -replace "%user%", $User
         Invoke-WebRequest -Uri $file.file -OutFile $_fileDeployParsed
 
         # make sure to make the file in to the user's ownership
-        chown $($env:USER):$($env:USER) $_fileDeployParsed
+        chown $($User):$($User) $_fileDeployParsed
         # also that the file could be opened/written
         chmod ug+rw $_fileDeployParsed
 
