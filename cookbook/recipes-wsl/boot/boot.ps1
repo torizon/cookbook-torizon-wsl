@@ -62,6 +62,11 @@ if ($null -eq $_user) {
         mkdir -p /home/$_user/.vscode-server/data/Machine
         cp /root/.vscode-server/data/Machine/settings.json /home/$_user/.vscode-server/data/Machine/settings.json
 
+        # set the .vscode-server ownership to the user
+        chown -R ${_user}:${_user} /home/$_user/.vscode-server
+        # also set write permissions
+        chmod -R ug+rw /home/$_user/.vscode-server
+
         # add the cap to ping
         chmod 4711 /usr/bin/ping
         setcap cap_net_raw+ep /usr/bin/ping
