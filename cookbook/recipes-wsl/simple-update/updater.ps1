@@ -36,7 +36,7 @@ try {
         Invoke-WebRequest -Uri $file.file -OutFile $_fileDeployParsed
 
         # make sure to make the file in to the user's ownership
-        chown $($User):$($User) $_fileDeployParsed
+        chown $User $_fileDeployParsed
         # also that the file could be opened/written
         chmod ug+rw $_fileDeployParsed
 
