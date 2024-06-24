@@ -51,6 +51,9 @@ try {
     $osRelease = $osRelease -replace '(VERSION=).*', "`${1}$versionID"
     $osRelease = $osRelease -replace '(VARIANT=).*', "`${1}`"Docker`""
     $osRelease | Set-Content -Path /etc/os-release
+
+    # 5. Clean the telemetry.lock file
+    rm -rf /tmp/telemetry.lock
 }
 catch {
     Write-Host "An error occurred: $_"
