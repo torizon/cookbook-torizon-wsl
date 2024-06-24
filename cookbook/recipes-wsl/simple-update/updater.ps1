@@ -6,6 +6,7 @@
 ##
 
 $version = "v0.0.12-rc9"
+$versionID = "0.0.12"
 
 try {
     # 1. Check if there is a new version
@@ -34,6 +35,13 @@ try {
             chmod +x $_fileDeployParsed
         }
     }
+
+    # 4. Update the /etc/os-release
+    $osRelease = Get-Content -Path /etc/os-release
+    $osRelease = $osRelease -replace '(VERSION_ID=).*', "`${1}$versionID"
+    $osRelease = $osRelease -replace '(VERSION=).*', "`${1}$versionID"
+    $osRelease = $osRelease -replace '(VARIANT=).*', "`${1}`"Docker`""
+    $osRelease | Set-Content -Path /etc/os-release
 }
 catch {
     Write-Host "An error occurred: $_"
