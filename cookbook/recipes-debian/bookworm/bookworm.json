@@ -27,7 +27,8 @@
         "bash-completion",
         "wget",
         "git",
-        "bind9-dnsutils"
+        "bind9-dnsutils",
+        "rsync"
     ],
     "bundleRecipes": [
         "tar.ts"

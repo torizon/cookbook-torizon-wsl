@@ -9,8 +9,8 @@ param(
 # then deploy the new files
 ##
 
-$version = "v0.0.12-rc9"
-$versionID = "0.0.12"
+$version = "v0.0.13"
+$versionID = "0.0.13"
 
 try {
     # 1. Check if there is a new version
@@ -43,9 +43,31 @@ try {
         if ($file.exec -eq $true) {
             chmod +x $_fileDeployParsed
         }
+
+        # check if the file is itself
+        if ($file.deploy -eq "/opt/updater/updater.ps1") {
+            # is different from the current file ?
+            $_new_sha = Get-FileHash -Path "/opt/updater/updater.ps1"
+
+            if ($MY_SHA.Hash -ne $_new_sha.Hash) {
+                Write-Host "The updater script has been updated, restarting the script"
+                pwsh -File $_fileDeployParsed
+                exit 0
+            }
+        }
     }
 
-    # 4. Update the /etc/os-release
+    # 4. install the dep packages
+    $reqPackages = Invoke-WebRequest -Uri `
+        "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/simple-update/packages"
+    $depPackages = $reqPackages.Content | ConvertFrom-Json
+
+    foreach ($package in $depPackages.packages) {
+        Write-Host "Installing :: $($package)"
+        apt-get install -y $package
+    }
+
+    # 5. Update the /etc/os-release
     $osRelease = Get-Content -Path /etc/os-release
     $osRelease = $osRelease -replace '(VERSION_ID=).*', "`${1}$versionID"
     $osRelease = $osRelease -replace '(VERSION=).*', "`${1}$versionID"
