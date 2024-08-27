@@ -36,6 +36,28 @@ execSync(
         env: process.env
     })
 
+// copy the updater script to /usr/bin
+execSync(
+    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `cp ${_path}/powershell-update ${IMAGE_MNT_ROOT}/usr/bin`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
+// give the updater script the right permissions
+execSync(
+    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `chmod +x ${IMAGE_MNT_ROOT}/usr/bin/powershell-update`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
 // install the .deb file
 execSync(
     `echo ${USER_PASSWD} | sudo -E -S ` +

@@ -24,6 +24,11 @@
             "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/vscode-config/settings.json",
             "deploy": "/home/%user%/.vscode-server/data/Machine/settings.json",
             "exec": true
+        },
+        {
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-dev-tools/microsoft/powershell/powershell-update",
+            "deploy": "/usr/bin",
+            "exec": true
         }
     ]
 }
