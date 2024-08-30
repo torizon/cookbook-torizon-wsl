@@ -9,8 +9,8 @@ param(
 # then deploy the new files
 ##
 
-$version = "v0.0.13"
-$versionID = "0.0.13"
+$version = "v0.0.14"
+$versionID = "0.0.14"
 
 try {
     # 1. Check if there is a new version
@@ -54,6 +54,12 @@ try {
                 pwsh -File $_fileDeployParsed
                 exit 0
             }
+        }
+
+        # check if the file should be executed as run updater script
+        if ($file.run -eq $true) {
+            Write-Host "Running :: $($_fileDeployParsed)"
+            bash -f $_fileDeployParsed || true
         }
     }
 
