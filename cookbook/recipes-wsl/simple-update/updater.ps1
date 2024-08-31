@@ -2,14 +2,16 @@
 
 param(
     [string]$User,
-    [string]$version="v0.0.16",
-    [string]$versionID="0.0.16"
+    [string]$version="v0.0.17",
+    [string]$versionID="0.0.17"
 )
 
 ##
 # Check if there is a new version
 # then deploy the new files
 ##
+
+$MY_SHA = Get-FileHash -Path "/opt/updater/updater.ps1"
 
 try {
     # 1. Check if there is a new version
