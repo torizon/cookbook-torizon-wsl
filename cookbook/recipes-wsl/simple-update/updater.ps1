@@ -1,16 +1,15 @@
 #!/usr/bin/env pwsh
 
 param(
-    [string]$User
+    [string]$User,
+    [string]$version="v0.0.15",
+    [string]$versionID="0.0.15"
 )
 
 ##
 # Check if there is a new version
 # then deploy the new files
 ##
-
-$version = "v0.0.14"
-$versionID = "0.0.14"
 
 try {
     # 1. Check if there is a new version
@@ -51,7 +50,10 @@ try {
 
             if ($MY_SHA.Hash -ne $_new_sha.Hash) {
                 Write-Host "The updater script has been updated, restarting the script"
-                pwsh -File $_fileDeployParsed
+                pwsh -File $_fileDeployParsed `
+                        -User $User `
+                        -version $version `
+                        -versionID $versionID
                 exit 0
             }
         }
