@@ -2,8 +2,8 @@
 
 param(
     [string]$User,
-    [string]$version="v0.0.17",
-    [string]$versionID="0.0.17"
+    [string]$version="v0.0.18",
+    [string]$versionID="0.0.18"
 )
 
 ##

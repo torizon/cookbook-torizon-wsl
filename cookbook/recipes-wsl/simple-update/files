@@ -38,7 +38,7 @@
         },
         {
             "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/torizonver/torizonver_install",
-            "deploy": "/tmp",
+            "deploy": "/tmp/torizonver_install",
             "exec": true,
             "run": true
         }
