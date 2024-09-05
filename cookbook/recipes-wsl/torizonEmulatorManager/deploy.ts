@@ -27,7 +27,7 @@ logger.info(`deploy ${meta.name} ...`)
 
 // create the path only in case
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `mkdir -p ${IMAGE_MNT_ROOT}/opt/${meta.name}`,
     {
         shell: "/bin/bash",
@@ -41,7 +41,7 @@ for (let _file of meta.files) {
 
     // copy the files to the rootfs
     execSync(
-        `echo ${USER_PASSWD} | sudo -E -S ` +
+        `echo ${USER_PASSWD} | sudo -k -E -S ` +
         `cp ${_file_path} ${IMAGE_MNT_ROOT}/opt/${meta.name}/${_file}`,
         {
             shell: "/bin/bash",
@@ -54,7 +54,7 @@ for (let _file of meta.files) {
 // copy the local file wslSocket
 const _file_path = `${_path}/wslSocket`
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `cp ${_file_path} ${IMAGE_MNT_ROOT}/opt/${meta.name}/wslSocket`,
     {
         shell: "/bin/bash",
@@ -65,7 +65,7 @@ execSync(
 
 // create a symlink to the /usr/bin
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `chroot ${IMAGE_MNT_ROOT} /bin/bash -c "` +
     `ln -sf /opt/${meta.name}/torizon-emulator-manager /usr/bin/emulator && ` +
     `ln -sf /opt/${meta.name}/torizon-emulator-manager /usr/bin/torizon-emulator-manager && ` +

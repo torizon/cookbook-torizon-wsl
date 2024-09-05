@@ -39,7 +39,7 @@ execSync(
 
 // copy the files to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `cp -r ${BUILD_PATH}/tmp/${MACHINE}/${meta.name}/bin/Release/net8.0/linux-x64/publish/ ${IMAGE_MNT_ROOT}/usr/welcome/`,
     {
         shell: "/bin/bash",

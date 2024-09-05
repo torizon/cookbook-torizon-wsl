@@ -39,7 +39,7 @@ execSync(
 
 // create the path only in case
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `mkdir -p ${IMAGE_MNT_ROOT}/opt/${meta.name}`,
     {
         shell: "/bin/bash",
@@ -50,7 +50,7 @@ execSync(
 
 // copy the files to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `cp -r ${BUILD_PATH}/tmp/${MACHINE}/${meta.name}/bin/Release/net8.0/linux-x64/publish/ ${IMAGE_MNT_ROOT}/opt/${meta.name}/`,
     {
         shell: "/bin/bash",
@@ -62,7 +62,7 @@ execSync(
 // copy the local file torizonver script
 const _local_file_path = `${_path}/torizonver`
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `cp ${_local_file_path} ${IMAGE_MNT_ROOT}/opt/${meta.name}/torizonver`,
     {
         shell: "/bin/bash",
@@ -73,7 +73,7 @@ execSync(
 
 // create a symlink to the /usr/bin
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -E -S ` +
     `chroot ${IMAGE_MNT_ROOT} /bin/bash -c "` +
     `ln -sf /opt/${meta.name}/torizonver /usr/bin/about && ` +
     `ln -sf /opt/${meta.name}/torizonver /usr/bin/torizonver && ` +
