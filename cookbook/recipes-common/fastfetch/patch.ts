@@ -27,7 +27,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // copy the modified builtin.c to the fastfetch source
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -S ` +
     `cp ${_path}/builtin.c ${BUILD_PATH}/tmp/${MACHINE}/fastfetch/src/logo/builtin.c`,
     {
         shell: "/bin/bash",

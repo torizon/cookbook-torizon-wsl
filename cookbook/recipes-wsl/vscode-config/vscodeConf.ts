@@ -31,7 +31,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // create the directory
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -S ` +
     `mkdir -p ${IMAGE_MNT_ROOT}/root/.vscode-server/data/Machine`,
     {
         shell: "/bin/bash",
@@ -42,7 +42,7 @@ execSync(
 
 // deploy the vscode settings.json to the chroot
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -S ` +
     `cp ${_path}/settings.json ${IMAGE_MNT_ROOT}/root/.vscode-server/data/Machine/settings.json`,
     {
         shell: "/bin/bash",

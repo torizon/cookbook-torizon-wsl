@@ -27,7 +27,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // create the path only in case
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -S ` +
     `mkdir -p ${IMAGE_MNT_ROOT}/opt/${meta.name}`,
     {
         shell: "/bin/bash",
@@ -38,7 +38,7 @@ execSync(
 
 // copy the boot script to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -S ` +
     `cp ${_path}/telemetry ${IMAGE_MNT_ROOT}/opt/${meta.name}/telemetry`,
     {
         shell: "/bin/bash",
@@ -49,7 +49,7 @@ execSync(
 
 // give the boot script execution permission
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
+    `echo ${USER_PASSWD} | sudo -k -S ` +
     `chmod +x ${IMAGE_MNT_ROOT}/opt/${meta.name}/telemetry`,
     {
         shell: "/bin/bash",
