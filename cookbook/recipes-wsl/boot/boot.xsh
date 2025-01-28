@@ -61,9 +61,6 @@ if _user is None:
         # we need this do be able to start docker without issues
         echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/sbin/service") >> /etc/sudoers
 
-        # add the /opt/telemetry/telemetry to the sudoers
-        # TODO: telemetry
-        # echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/telemetry/telemetry") >> /etc/sudoers
         echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info") >> /etc/sudoers
         echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.xsh") >> /etc/sudoers
         echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket") >> /etc/sudoers

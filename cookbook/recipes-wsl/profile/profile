@@ -43,10 +43,6 @@ if [ $? -eq 0 ] ; then
   # fix the Docker socket
   sudo -E /opt/torizon-emulator-manager/wslSocket > ~/.log/wslSocket.log 2>&1 & disown
 
-  # TODO: telemetry is not working yet
-  # run the telemetry in the background
-  # sudo -E /opt/telemetry/telemetry > ~/.log/telemetry.log 2>&1 & disown
-
   # run the updater in the background
   sudo -E /opt/updater/updater.xsh -User $USER > ~/.log/updater.log 2>&1 & disown
 

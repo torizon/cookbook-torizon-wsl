@@ -89,9 +89,5 @@ try:
     with open("/etc/os-release", "w") as f:
         f.write(os_release)
 
-    # 6. Clean the telemetry.lock file
-    if os.path.exists("/tmp/telemetry.lock"):
-        os.remove("/tmp/telemetry.lock")
-
 except Exception as e:
     print(f"An error occurred: {e}")
