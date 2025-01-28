@@ -1,18 +1,20 @@
 #!/bin/bash
 
-# check if /opt/torizonver/publish/torizonver exists
-if [ ! -f /opt/torizonver/publish/torizonver ]; then
-    echo "torizonver not found in /opt/torizonver/publish"
+# check if /opt/torizonver/torizonver
+if [ ! -f /opt/torizonver ]; then
+    echo "torizonver not found"
     apt-get install unzip
     wget https://github.com/commontorizon/torizonver/releases/download/0.0.1/torizonver-0.0.1.zip -O /tmp/torizonver.zip
     mkdir -p /opt/torizonver
     unzip -o /tmp/torizonver.zip -d /tmp/torizonver
-    cp -r /tmp/torizonver/bin/Release/net8.0/linux-x64/publish/ /opt/torizonver/
+    cp -r /tmp/torizonver/ /opt/torizonver/
     rm -rf /tmp/torizonver
     rm /tmp/torizonver.zip
-    wget https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/torizonver/torizonver -O /opt/torizonver/torizonver
     chmod +x /opt/torizonver/torizonver
-    chmod +x /opt/torizonver/publish/torizonver
     ln -s /opt/torizonver/torizonver /usr/bin/torizonver
     ln -s /opt/torizonver/torizonver /usr/bin/about
+
+    # install deps
+    cd /opt/torizonver
+    pipenv sync
 fi

@@ -5,8 +5,8 @@
     "support": [
         "linux/amd64"
     ],
-    "source": "https://github.com/commontorizon/torizonver/releases/download/0.0.1/",
-    "file": "torizonver-0.0.1.zip",
+    "source": "https://github.com/commontorizon/torizonver/releases/download/1.0.1/",
+    "file": "torizonver-1.0.1.zip",
     "hostDeps": [
         "unzip"
     ],
@@ -19,7 +19,10 @@
         "libfreetype6",
         "libgbm1",
         "libinput10",
-        "libxkbcommon0"
+        "libxkbcommon0",
+        "python3",
+        "python3-pip",
+        "pipenv"
     ],
     "fetchRecipes": [
         "fetch.ts"
