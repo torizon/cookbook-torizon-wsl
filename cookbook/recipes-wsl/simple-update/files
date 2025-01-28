@@ -1,46 +1,34 @@
 {
     "update": [
         {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/simple-update/updater.ps1",
-            "deploy": "/opt/updater/updater.ps1",
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/dev/cookbook/recipes-wsl/simple-update/updater.xsh",
+            "deploy": "/opt/updater/updater.xsh",
             "exec": true,
             "run": false
         },
         {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/boot/boot.ps1",
-            "deploy": "/bin/boot.ps1",
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/dev/cookbook/recipes-wsl/boot/boot.xsh",
+            "deploy": "/bin/boot.xsh",
             "exec": true,
             "run": false
         },
         {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/telemetry/telemetry",
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/dev/cookbook/recipes-wsl/telemetry/telemetry",
             "deploy": "/opt/telemetry/telemetry",
             "exec": true,
             "run": false
         },
         {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/profile/profile",
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/dev/cookbook/recipes-wsl/profile/profile",
             "deploy": "/etc/profile",
             "exec": true,
             "run": false
         },
         {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/vscode-config/settings.json",
+            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/dev/cookbook/recipes-wsl/vscode-config/settings.json",
             "deploy": "/home/%user%/.vscode-server/data/Machine/settings.json",
             "exec": true,
             "run": false
-        },
-        {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-dev-tools/microsoft/powershell/powershell-update",
-            "deploy": "/usr/bin",
-            "exec": true,
-            "run": false
-        },
-        {
-            "file": "https://raw.githubusercontent.com/commontorizon/cookbook-torizon-wsl/main/cookbook/recipes-wsl/torizonver/torizonver_install",
-            "deploy": "/tmp/torizonver_install",
-            "exec": true,
-            "run": true
         }
     ]
 }

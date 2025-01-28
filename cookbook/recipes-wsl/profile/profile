@@ -47,9 +47,8 @@ if [ $? -eq 0 ] ; then
   # run the telemetry in the background
   # sudo -E /opt/telemetry/telemetry > ~/.log/telemetry.log 2>&1 & disown
 
-  # TODO: simple updater is not working yet
   # run the updater in the background
-  # sudo -E /opt/updater/updater.ps1 -User $USER > ~/.log/updater.log 2>&1 & disown
+  sudo -E /opt/updater/updater.xsh -User $USER > ~/.log/updater.log 2>&1 & disown
 
   echo "Success"
 else

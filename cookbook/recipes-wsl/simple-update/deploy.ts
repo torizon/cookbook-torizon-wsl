@@ -39,7 +39,7 @@ execSync(
 // copy the boot script to the rootfs
 execSync(
     `echo ${USER_PASSWD} | sudo -k -S ` +
-    `cp ${_path}/updater.ps1 ${IMAGE_MNT_ROOT}/opt/updater/`,
+    `cp ${_path}/updater.xsh ${IMAGE_MNT_ROOT}/opt/updater/`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
@@ -50,11 +50,12 @@ execSync(
 // give the boot script execution permission
 execSync(
     `echo ${USER_PASSWD} | sudo -k -S ` +
-    `chmod +x ${IMAGE_MNT_ROOT}/opt/updater/updater.ps1`,
+    `chmod +x ${IMAGE_MNT_ROOT}/opt/updater/updater.xsh`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
         encoding: "utf-8",
         env: process.env
     })
+
 logger.success(`Deployed ${meta.name}!`)

@@ -50,4 +50,5 @@ execSync(
         encoding: "utf-8",
         env: process.env
     })
+
 logger.success("ok, vscode configuration deployed to the rootfs")

@@ -65,8 +65,7 @@ if _user is None:
         # TODO: telemetry
         # echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/telemetry/telemetry") >> /etc/sudoers
         echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info") >> /etc/sudoers
-        # TODO: simple-updater
-        # echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.ps1") >> /etc/sudoers
+        echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.xsh") >> /etc/sudoers
         echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket") >> /etc/sudoers
 
         # vscode settings
