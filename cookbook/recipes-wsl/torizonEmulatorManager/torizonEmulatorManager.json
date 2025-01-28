@@ -5,7 +5,7 @@
     "support": [
         "linux/amd64"
     ],
-    "source": "https://github.com/commontorizon/torizonEmulatorManager/releases/download/0.0.22/",
+    "source": "https://github.com/commontorizon/torizonEmulatorManager/releases/download/1.0.1/",
     "files": [
         "docker-compose.yml",
         "torizon-emulator-manager"
