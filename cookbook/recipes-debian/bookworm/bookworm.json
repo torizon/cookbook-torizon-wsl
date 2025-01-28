@@ -28,7 +28,11 @@
         "wget",
         "git",
         "bind9-dnsutils",
-        "rsync"
+        "rsync",
+        "python3",
+        "python3-pip",
+        "pipx",
+        "pipenv"
     ],
     "bundleRecipes": [
         "tar.ts"

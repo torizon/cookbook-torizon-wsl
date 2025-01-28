@@ -27,8 +27,28 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // copy the boot script to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
-    `cp ${_path}/boot.ps1 ${IMAGE_MNT_ROOT}/bin/`,
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `cp ${_path}/boot.xsh ${IMAGE_MNT_ROOT}/bin/`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
+execSync(
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `cp ${_path}/specific_init.sh ${IMAGE_MNT_ROOT}/opt/specific_init.sh`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
+execSync(
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `cp ${_path}/user_init.xsh ${IMAGE_MNT_ROOT}/opt/user_init.xsh`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
@@ -38,12 +58,33 @@ execSync(
 
 // give the boot script execution permission
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -E -S ` +
-    `chmod +x ${IMAGE_MNT_ROOT}/bin/boot.ps1`,
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `chmod +x ${IMAGE_MNT_ROOT}/bin/boot.xsh`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
         encoding: "utf-8",
         env: process.env
     })
+
+execSync(
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `chmod +x ${IMAGE_MNT_ROOT}/opt/specific_init.sh`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
+execSync(
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `chmod +x ${IMAGE_MNT_ROOT}/opt/user_init.xsh`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
 logger.success(`Deployed ${meta.name}!`)

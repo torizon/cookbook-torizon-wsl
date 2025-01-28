@@ -3,11 +3,12 @@
     "machine": "wsl-amd64",
     "arch": "linux/amd64",
     "version": {
-        "major": 0,
+        "major": 1,
         "minor": 0,
-        "patch": 18,
+        "patch": 0,
         "build": 0
     },
+    "useInitramfs": false,
     "maxImgSize": 4096,
     "searchForRecipesOn": [
         "../gaia/cookbook",
@@ -22,6 +23,11 @@
         "userlogin",
         "hostname",
         "simple-splash",
-        "neofetch"
+        "resize-helper",
+        "neofetch",
+        "powershell",
+        "apt",
+        "telemetry",
+        "simple-update"
     ]
 }
