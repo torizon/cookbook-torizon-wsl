@@ -2,8 +2,8 @@
 
 param(
     [string]$User,
-    [string]$version="v0.0.18",
-    [string]$versionID="0.0.18"
+    [string]$version="v0.0.19",
+    [string]$versionID="0.0.19"
 )
 
 ##
@@ -18,7 +18,12 @@ try {
     $latestData = Invoke-RestMethod -Uri `
         "https://api.github.com/repos/commontorizon/cookbook-torizon-wsl/releases"
 
-    if ($version -eq $latestData[0].tag_name) {
+    # this updater, or Torizon Development Environment for WSL v0 shoul not be
+    # able to update to v1
+    if (
+        $version -eq $latestData[0].tag_name -or
+        [int]::Parse($latestData[0].tag_name[1]) -gt 0
+    ) {
         Write-Host "No new version available"
         exit 0
     }
