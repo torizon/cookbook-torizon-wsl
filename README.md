@@ -13,18 +13,20 @@ This was especially designed for have an already set up development environment 
 
 ## Prerequisites
 
-- [Quecto Project Gaia Core](https://github.com/quectoproject/gaia);
+- [Gaia project Gaia Core](https://github.com/gaiaBuildSystem/gaia);
 
 <p align="center">
     <img
-        src="https://docs.toradex.com/114683-quectowithbackgroundsmall.png"
-        alt="This is a Quecto Project based cookbook"
-        width="200" />
-    <img
-        src="https://docs.toradex.com/114684-nostresslogosmall.png"
-        alt="Torizon 💘 WSL 2"
-        width="200" />
+        src="https://github.com/gaiaBuildSystem/.github/raw/main/profile/GaiaBuildSystemLogoDebCircle.png"
+        alt="This is a Gaia Project based cookbook"
+        width="170" />
 </p>
+
+## Build an Image
+
+```bash
+./gaia/scripts/bitcook/gaia.ts --buildPath /home/user/workdir --distro ./cookbook-torizon-wsl/distro-<arch>.json
+```
 
 ## Image Generated
 
