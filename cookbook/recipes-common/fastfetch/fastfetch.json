@@ -3,7 +3,8 @@
     "type": "config",
     "priority": 1,
     "support": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
     ],
     "merge": true,
     "patchRecipes": [

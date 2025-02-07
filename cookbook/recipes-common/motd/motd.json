@@ -3,7 +3,8 @@
     "type": "package",
     "priority": 1,
     "support": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
     ],
     "env": {
         "MOTD_MESSAGE": "Welcome to Torizon Development WSL Distro!"

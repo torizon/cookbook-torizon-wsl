@@ -3,7 +3,8 @@
     "type": "application",
     "priority": 0,
     "support": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
     ],
     "source": "https://github.com/commontorizon/torizonver/releases/download/1.0.1/",
     "file": "torizonver-1.0.1.zip",

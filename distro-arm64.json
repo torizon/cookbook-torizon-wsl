@@ -1,0 +1,32 @@
+{
+    "name": "Torizon-WSL-2",
+    "machine": "wsl-arm64",
+    "arch": "linux/arm64",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0,
+        "build": 0
+    },
+    "useInitramfs": false,
+    "maxImgSize": 4096,
+    "searchForRecipesOn": [
+        "../gaia/cookbook",
+        "./cookbook"
+    ],
+    "excludeRecipes": [
+        "recipes-bsp",
+        "recipes-kernel",
+        "recipes-init",
+        "fstab",
+        "systemd",
+        "userlogin",
+        "hostname",
+        "simple-splash",
+        "resize-helper",
+        "neofetch",
+        "powershell",
+        "apt",
+        "simple-update"
+    ]
+}

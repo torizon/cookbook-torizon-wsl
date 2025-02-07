@@ -3,7 +3,8 @@
     "type": "config",
     "priority": 1,
     "support": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
     ],
     "env": {
         "OS_RELEASE_PRETTY_NAME": "Torizon Development Environment for WSL 2",
