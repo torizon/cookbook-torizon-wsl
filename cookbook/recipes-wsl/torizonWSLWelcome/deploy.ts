@@ -48,6 +48,17 @@ execSync(
         env: process.env
     })
 
+// clean up
+execSync(
+    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `rm -rf ${IMAGE_MNT_ROOT}/usr/welcome/*.zip`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
+
 // install env
 execSync(
     `echo ${USER_PASSWD} | sudo -k -S ` +
