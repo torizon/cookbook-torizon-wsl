@@ -7,7 +7,7 @@
         "linux/arm64"
     ],
     "env": {
-        "ISSUE_LINE": "Torizon Development WSL Distro"
+        "ISSUE_LINE": "Torizon Development WSL Distro (Debian Bookworm)"
     },
     "merge": true
 }
