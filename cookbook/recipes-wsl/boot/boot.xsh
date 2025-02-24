@@ -9,6 +9,7 @@
 import os
 import sys
 import configparser
+from torizon_templates_utils.colors import print,BgColor,Color
 from torizon_templates_utils.errors import Error_Out, Error, last_return_code
 
 # check if there already another user setup than root
@@ -104,9 +105,16 @@ if _user is None:
 
 
 # start docker service ??
-/usr/sbin/service docker status
+_ret = $(/usr/sbin/service docker status)
 if last_return_code() != 0:
-    sudo /usr/sbin/service docker start
+    print(f"Starting Docker service ...", bg_color=BgColor.BLUE, color=Color.WHITE)
+    _ret = $(sudo /usr/sbin/service docker start)
+    if last_return_code() != 0:
+        print(f"Not possible to start Docker service", color=Color.RED)
+    else:
+        print(f"Docker service OK", color=Color.GREEN)
+else:
+    print(f"Docker service OK", color=Color.GREEN)
 
 # still having controll to the flow
 cd /home/@(_user)
