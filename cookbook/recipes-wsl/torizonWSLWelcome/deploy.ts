@@ -39,7 +39,7 @@ execSync(
 
 // copy the files to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp -r ${BUILD_PATH}/tmp/${MACHINE}/${meta.name}/ ${IMAGE_MNT_ROOT}/usr/welcome/`,
     {
         shell: "/bin/bash",
@@ -50,7 +50,7 @@ execSync(
 
 // clean up
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `rm -rf ${IMAGE_MNT_ROOT}/usr/welcome/*.zip`,
     {
         shell: "/bin/bash",
@@ -61,7 +61,7 @@ execSync(
 
 // install env
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chroot ${IMAGE_MNT_ROOT} /bin/bash -c "` +
     `cd /usr/welcome && ` +
     `pipenv sync` +

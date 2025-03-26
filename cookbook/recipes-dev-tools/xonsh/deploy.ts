@@ -30,7 +30,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // inject xonsh
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chroot ${IMAGE_MNT_ROOT} /bin/bash -c "` +
     `pipx install xonsh && ` +
     `pipx inject xonsh torizon-templates-utils && ` +

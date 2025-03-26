@@ -27,7 +27,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // copy the boot script to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp ${_path}/boot.xsh ${IMAGE_MNT_ROOT}/bin/`,
     {
         shell: "/bin/bash",
@@ -37,7 +37,7 @@ execSync(
     })
 
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp ${_path}/specific_init.sh ${IMAGE_MNT_ROOT}/opt/specific_init.sh`,
     {
         shell: "/bin/bash",
@@ -47,7 +47,7 @@ execSync(
     })
 
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp ${_path}/user_init.xsh ${IMAGE_MNT_ROOT}/opt/user_init.xsh`,
     {
         shell: "/bin/bash",
@@ -58,7 +58,7 @@ execSync(
 
 // give the boot script execution permission
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chmod +x ${IMAGE_MNT_ROOT}/bin/boot.xsh`,
     {
         shell: "/bin/bash",
@@ -68,7 +68,7 @@ execSync(
     })
 
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chmod +x ${IMAGE_MNT_ROOT}/opt/specific_init.sh`,
     {
         shell: "/bin/bash",
@@ -78,7 +78,7 @@ execSync(
     })
 
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chmod +x ${IMAGE_MNT_ROOT}/opt/user_init.xsh`,
     {
         shell: "/bin/bash",

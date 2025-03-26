@@ -27,7 +27,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // create the folder just in case
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `mkdir -p ${IMAGE_MNT_ROOT}/opt/updater`,
     {
         shell: "/bin/bash",
@@ -38,7 +38,7 @@ execSync(
 
 // copy the boot script to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp ${_path}/updater.xsh ${IMAGE_MNT_ROOT}/opt/updater/`,
     {
         shell: "/bin/bash",
@@ -49,7 +49,7 @@ execSync(
 
 // give the boot script execution permission
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chmod +x ${IMAGE_MNT_ROOT}/opt/updater/updater.xsh`,
     {
         shell: "/bin/bash",

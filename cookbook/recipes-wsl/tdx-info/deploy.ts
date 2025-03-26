@@ -30,7 +30,7 @@ const _file_path = `${BUILD_PATH}/tmp/${MACHINE}/${meta.name}/${_file}`
 
 // copy the boot script to the rootfs
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp ${_file_path} ${IMAGE_MNT_ROOT}/usr/bin/tdx-info`,
     {
         shell: "/bin/bash",
@@ -41,7 +41,7 @@ execSync(
 
 // give the boot script execution permission
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `chmod +x ${IMAGE_MNT_ROOT}/usr/bin/tdx-info`,
     {
         shell: "/bin/bash",

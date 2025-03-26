@@ -32,7 +32,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 // always clean the old .tar file
 if (FS.existsSync(`${IMAGE_PATH}.tar`)) {
     execSync(
-        `echo ${USER_PASSWD} | sudo -E -S rm -rf ${IMAGE_PATH}.tar`,
+        `sudo -E rm -rf ${IMAGE_PATH}.tar`,
         {
             shell: "/bin/bash",
             stdio: "inherit",
@@ -44,7 +44,7 @@ if (FS.existsSync(`${IMAGE_PATH}.tar`)) {
 
 // first we need to clean the chroot bindigns
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S bash -c "` +
+    `sudo -E bash -c "` +
     `umount ${IMAGE_MNT_ROOT}/dev/pts && ` +
     `umount ${IMAGE_MNT_ROOT}/dev && ` +
     `umount ${IMAGE_MNT_ROOT}/proc && ` +
@@ -58,7 +58,7 @@ execSync(
 
 // FIXME: this will remove with exit code, but should be ok
 execSync(
-    `echo ${USER_PASSWD} | sudo -E -S bash -c "` +
+    `sudo -E bash -c "` +
     `cd ${IMAGE_MNT_ROOT} && ` +
     `shopt -s dotglob; tar -cvpf ${IMAGE_PATH}.tar * || true"`,
     {

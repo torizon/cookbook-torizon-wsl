@@ -31,7 +31,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 // deploy the wsl.conf to the chroot
 execSync(
-    `echo ${USER_PASSWD} | sudo -k -S ` +
+    `sudo -k ` +
     `cp ${_path}/wsl.conf ${IMAGE_MNT_ROOT}/etc/wsl.conf`,
     {
         shell: "/bin/bash",
