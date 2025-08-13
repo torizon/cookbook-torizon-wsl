@@ -34,7 +34,7 @@ _user = get_user()
 if _user is None:
     # no users found, create a new user
     cd /usr/welcome
-    pipenv run python main.py
+    python3 user.py
 
     # now we should have an user
     _user = get_user()

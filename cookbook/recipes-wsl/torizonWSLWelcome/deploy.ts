@@ -25,11 +25,11 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 
 logger.info(`deploy ${meta.name} ...`)
 
-// unzip the file
-const _file_path = `${BUILD_PATH}/tmp/${MACHINE}/${meta.name}/${meta.file}`
 
+// create the folder
 execSync(
-    `unzip -o ${_file_path} -d ${BUILD_PATH}/tmp/${MACHINE}/${meta.name}`,
+    `sudo -k ` +
+    `mkdir -p ${IMAGE_MNT_ROOT}/usr/welcome`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
@@ -40,7 +40,7 @@ execSync(
 // copy the files to the rootfs
 execSync(
     `sudo -k ` +
-    `cp -r ${BUILD_PATH}/tmp/${MACHINE}/${meta.name}/ ${IMAGE_MNT_ROOT}/usr/welcome/`,
+    `cp ${_path}/user.py ${IMAGE_MNT_ROOT}/usr/welcome/user.py`,
     {
         shell: "/bin/bash",
         stdio: "inherit",
@@ -48,29 +48,5 @@ execSync(
         env: process.env
     })
 
-// clean up
-execSync(
-    `sudo -k ` +
-    `rm -rf ${IMAGE_MNT_ROOT}/usr/welcome/*.zip`,
-    {
-        shell: "/bin/bash",
-        stdio: "inherit",
-        encoding: "utf-8",
-        env: process.env
-    })
-
-// install env
-execSync(
-    `sudo -k ` +
-    `chroot ${IMAGE_MNT_ROOT} /bin/bash -c "` +
-    `cd /usr/welcome && ` +
-    `pipenv sync` +
-    `"`,
-    {
-        shell: "/bin/bash",
-        stdio: "inherit",
-        encoding: "utf-8",
-        env: process.env
-    })
 
 logger.success(`Deployed ${meta.name}!`)

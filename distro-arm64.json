@@ -5,8 +5,8 @@
     "version": {
         "major": 1,
         "minor": 0,
-        "patch": 0,
-        "build": 0
+        "patch": 2,
+        "build": 1
     },
     "useInitramfs": false,
     "maxImgSize": 4096,
