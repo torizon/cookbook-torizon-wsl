@@ -16,6 +16,7 @@ from torizon_templates_utils.errors import Error_Out, Error, last_return_code
 # get all regular users
 def get_user():
     user = None
+    not_configured = True
 
     with open('/etc/passwd') as f:
         for line in f:
@@ -24,84 +25,81 @@ def get_user():
                 user = fields[0]
                 break
 
-    return user
+    # check if the file lock exists
+    if os.path.exists('/usr/welcome/.user-configured'):
+        not_configured = False
+
+    return user, not_configured
 
 
 # we already have a user???
-_user = get_user()
+_user, _no_configured = get_user()
 
+if (_user is not None) and (_no_configured is True):
+    # add user to sudo group
+    usermod -aG sudo @(_user)
 
-if _user is None:
-    # no users found, create a new user
-    cd /usr/welcome
-    python3 user.py
+    # docker config
+    usermod -aG docker @(_user)
 
-    # now we should have an user
-    _user = get_user()
+    # create the .bashrc
+    cp /etc/bash.bashrc /home/@(_user)/.bashrc
 
-    if _user is not None:
-        # add user to sudo group
-        usermod -aG sudo @(_user)
+    # make sure that /bin/sh is pointing to bash
+    ln -sf /bin/bash /bin/sh
 
-        # docker config
-        usermod -aG docker @(_user)
+    # and pass the ownership of the home directory to the user
+    chown -R @(_user):@(_user) /home/@(_user)
 
-        # create the .bashrc
-        cp /etc/bash.bashrc /home/@(_user)/.bashrc
+    # change the default shell to bash
+    chsh -s /bin/bash @(_user)
 
-        # make sure that /bin/sh is pointing to bash
-        ln -sf /bin/bash /bin/sh
+    # add the /usr/sbin/service to the sudoers
+    # we need this do be able to start docker without issues
+    echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/sbin/service") >> /etc/sudoers
 
-        # and pass the ownership of the home directory to the user
-        chown -R @(_user):@(_user) /home/@(_user)
+    echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info") >> /etc/sudoers
+    echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.xsh") >> /etc/sudoers
+    echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket") >> /etc/sudoers
 
-        # change the default shell to bash
-        chsh -s /bin/bash @(_user)
+    # vscode settings
+    mkdir -p /home/@(_user)/.vscode-server/data/Machine
+    cp /root/.vscode-server/data/Machine/settings.json /home/@(_user)/.vscode-server/data/Machine/settings.json
 
-        # add the /usr/sbin/service to the sudoers
-        # we need this do be able to start docker without issues
-        echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/sbin/service") >> /etc/sudoers
+    # set the .vscode-server ownership to the user
+    chown -R @(_user):@(_user) /home/@(_user)/.vscode-server
+    # also set write permissions
+    chmod -R ug+rw /home/@(_user)/.vscode-server
 
-        echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info") >> /etc/sudoers
-        echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.xsh") >> /etc/sudoers
-        echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket") >> /etc/sudoers
+    # add the cap to ping
+    chmod 4711 /usr/bin/ping
+    setcap cap_net_raw+ep /usr/bin/ping
 
-        # vscode settings
-        mkdir -p /home/@(_user)/.vscode-server/data/Machine
-        cp /root/.vscode-server/data/Machine/settings.json /home/@(_user)/.vscode-server/data/Machine/settings.json
+    # add the user to the /etc/wsl.conf
+    _config = configparser.ConfigParser()
+    _wslConf_raw = $(cat /etc/wsl.conf)
+    _config.read_string(_wslConf_raw)
 
-        # set the .vscode-server ownership to the user
-        chown -R @(_user):@(_user) /home/@(_user)/.vscode-server
-        # also set write permissions
-        chmod -R ug+rw /home/@(_user)/.vscode-server
+    _config['user']['default'] = _user
+    rm -rf /etc/wsl.conf
 
-        # add the cap to ping
-        chmod 4711 /usr/bin/ping
-        setcap cap_net_raw+ep /usr/bin/ping
+    # write the /etc/wsl.conf back
+    with open('/etc/wsl.conf', 'w') as _wslConf:
+        _config.write(_wslConf)
 
-        # add the user to the /etc/wsl.conf
-        _config = configparser.ConfigParser()
-        _wslConf_raw = $(cat /etc/wsl.conf)
-        _config.read_string(_wslConf_raw)
+    # configured, we need to have a way to tell to Windows this
+    mkdir -p /mnt/c/Users/Public/.torizon
+    touch /mnt/c/Users/Public/.torizon/.configured
+    touch /usr/welcome/.user-configured
 
-        _config['user']['default'] = _user
-        rm -rf /etc/wsl.conf
+    # the first configuration we exit for the wizard to finish
+    sys.exit(1)
 
-        # write the /etc/wsl.conf back
-        with open('/etc/wsl.conf', 'w') as _wslConf:
-            _config.write(_wslConf)
-
-        # configured, we need to have a way to tell to Windows this
-        mkdir -p /mnt/c/Users/Public/.torizon
-        touch /mnt/c/Users/Public/.torizon/.configured
-
-        # the first configuration we exit for the wizard to finish
-        sys.exit(1)
-    else:
-        Error_Out(
-            "Error: User not added?",
-            Error.ETOMCRUISE
-        )
+elif _user is None:
+    Error_Out(
+        "Error: user not created",
+        Error.ETOMCRUISE
+    )
 
 
 # start docker service ??

@@ -32,17 +32,29 @@ This was especially designed for have an already set up development environment 
 
 ### Testing Tricks
 
-#### Set Login and Password
+#### Installing
 
-Is hard to automate tests for the configuration UI from the Windows side, so we have some tricks to help you test the configuration.
+Supposing that the path for the creation of the VM `.vhdx` is the same where the `.tar` is located:
 
-The configuration GUI will automatically set the login and password for you if you set a file under `c:\users\public\.torizon\password.txt` with the following content:
-
-```txt
-login:password
+```bash
+wsl --import TorizonTest . ./wsl-amd64-1-0-2.img.tar --version 2
 ```
 
-> ⚠️ **Warning**: This will be used only on the first boot of the Torizon Environment for WSL 2.
+#### Set Login and Password
+
+The WSL Torizon distro was not designed to be used without the Torizon IDE Extension. The flow of configuring a non root login during the first boot is implemented on the IDE side. For tests puposes the `/usr/welcome/user.py` can be used directly:
+
+```bash
+wsl -d TorizonTest /usr/welcome/user.py test test-secure-password
+```
+
+Where user will be `test` and password will be `test-secure-password`. After this run the WSL distro:
+
+```bash
+wsl -d TorizonTest
+```
+
+This ran, after the ran of the `/usr/welcome/user.py` will then configure the boot flow to use the new user created. The next calls then will be ok to be used as normal WSL distro.
 
 #### Debug installation
 

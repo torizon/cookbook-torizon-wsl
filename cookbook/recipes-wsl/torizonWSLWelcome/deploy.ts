@@ -48,5 +48,15 @@ execSync(
         env: process.env
     })
 
+// make it executable
+execSync(
+    `sudo -k ` +
+    `chmod +x ${IMAGE_MNT_ROOT}/usr/welcome/user.py`,
+    {
+        shell: "/bin/bash",
+        stdio: "inherit",
+        encoding: "utf-8",
+        env: process.env
+    })
 
 logger.success(`Deployed ${meta.name}!`)

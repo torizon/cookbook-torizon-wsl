@@ -1,29 +1,17 @@
+#!/usr/bin/env python3
 """Add the user login to the WSL distro"""
 
-import os
+import re
 import sys
 import subprocess
 
 
-def __automated_login() -> tuple[str, str] |  None:
-    _automated_ok = False
-    _automated_login_path = "/mnt/c/Users/Public/.torizon/password.txt"
+def __is_valid_psswd(login_psswd):
+    return bool(re.fullmatch(r'[^:\n]+', login_psswd))
 
-    # for WSL
-    if os.path.exists("/mnt/c/Users/Public/.torizon/password.txt"):
-        _automated_ok = True
-    if os.path.exists("./.conf/password.txt"):
-        _automated_ok = True
-        _automated_login_path = "./.conf/password.txt"
 
-    if _automated_ok:
-        with open(_automated_login_path, "r", encoding="utf-8") as file:
-            content = file.read()
-            login_name, login_rep_psswd = content.split(':')
-
-            return login_name, login_rep_psswd
-
-    return None
+def __is_valid_login(login_name):
+    return bool(re.fullmatch(r'[a-z_][a-z0-9_-]{0,31}', login_name))
 
 
 def __create_login(login_name, login_rep_psswd):
@@ -49,16 +37,26 @@ def __create_login(login_name, login_rep_psswd):
 
 
 if __name__ == "__main__":
-    print("Creating the login please wait ...")
-    login_info = __automated_login()
-
-    if login_info:
-        l_name, l_psswd = login_info
-        __create_login(l_name, l_psswd)
-
-        print("User created, ok")
-        print("Configuring, please wait ...")
-
-        sys.exit(0)
-    else:
+    # check the arguments
+    if len(sys.argv) != 3:
+        print("Usage: ./user.py <login_name> <login_password>")
         sys.exit(69)
+
+    l_name = sys.argv[1]
+    l_psswd = sys.argv[2]
+
+    if __is_valid_login(l_name) is False:
+        print("Error: Invalid login name")
+        sys.exit(69)
+
+    if __is_valid_psswd(l_psswd) is False:
+        print("Error: Invalid password")
+        sys.exit(69)
+
+    print("Creating the login please wait ...")
+    __create_login(l_name, l_psswd)
+
+    print("User created, ok")
+    print("Configuring, please wait ...")
+
+    sys.exit(0)
