@@ -27,5 +27,6 @@
         "neofetch",
         "apt",
         "simple-update"
-    ]
+    ],
+    "$schema": "./schema/distro.json"
 }

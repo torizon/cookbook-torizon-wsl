@@ -28,5 +28,6 @@
         "powershell",
         "apt",
         "simple-update"
-    ]
+    ],
+    "$schema": "./schema/distro.json"
 }
