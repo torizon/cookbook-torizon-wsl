@@ -5,7 +5,7 @@
     "version": {
         "major": 1,
         "minor": 0,
-        "patch": 4,
+        "patch": 5,
         "build": 0
     },
     "useInitramfs": false,
@@ -25,6 +25,7 @@
         "simple-splash",
         "resize-helper",
         "neofetch",
+        "powershell",
         "apt",
         "simple-update"
     ],
