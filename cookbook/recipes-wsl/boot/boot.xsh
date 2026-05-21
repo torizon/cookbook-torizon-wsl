@@ -60,7 +60,6 @@ if (_user is not None) and (_no_configured is True):
 
     echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /usr/bin/tdx-info") >> /etc/sudoers
     echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/updater/updater.xsh") >> /etc/sudoers
-    echo @(f"{_user} ALL=(ALL) SETENV: NOPASSWD: /opt/torizon-emulator-manager/wslSocket") >> /etc/sudoers
 
     # vscode settings
     mkdir -p /home/@(_user)/.vscode-server/data/Machine
@@ -103,10 +102,10 @@ elif _user is None:
 
 
 # start docker service ??
-_ret = $(/usr/sbin/service docker status)
+_ret = !(/usr/sbin/service docker status)
 if last_return_code() != 0:
     print(f"Starting Docker service ...", bg_color=BgColor.BLUE, color=Color.WHITE)
-    _ret = $(sudo /usr/sbin/service docker start)
+    _ret = !(sudo /usr/sbin/service docker start)
     if last_return_code() != 0:
         print(f"Not possible to start Docker service", color=Color.RED)
     else:
