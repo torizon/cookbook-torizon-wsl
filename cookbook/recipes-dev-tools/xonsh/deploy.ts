@@ -1,7 +1,7 @@
 #!/usr/bin/env -S deno run --allow-all
 
 import PATH from "node:path"
-import FS from "node:fs"
+import process from "node:process";
 import logger from "node-color-log"
 import { execSync } from "node:child_process"
 
@@ -32,7 +32,7 @@ process.env.IMAGE_MNT_ROOT = IMAGE_MNT_ROOT
 execSync(
     `sudo -k ` +
     `chroot ${IMAGE_MNT_ROOT} /bin/bash -c "` +
-    `pipx install xonsh && ` +
+    `pipx install xonsh==0.23.7 && ` +
     `pipx inject xonsh torizon-templates-utils && ` +
     `ln -sf /root/.local/bin/xonsh /usr/bin/xonsh && ` +
     `chmod -R o+rx /root` +
