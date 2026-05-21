@@ -2,5 +2,5 @@
     "torizon.experimental": true,
     "torizon.gpuPrefixRC": true,
     "torizon.templatesBranch": "bookworm-7",
-    "torizon.templatesTag": "tos7"
+    "torizon.templatesTag": "bookworm-7"
 }
