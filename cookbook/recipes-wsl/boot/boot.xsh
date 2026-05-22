@@ -102,7 +102,7 @@ elif _user is None:
 
 
 # start docker service ??
-_ret = !(/usr/sbin/service docker status)
+_ret = !(sudo /usr/sbin/service docker status)
 if _ret.returncode != 0:
     print(f"Starting Docker service ...", bg_color=BgColor.BLUE, color=Color.WHITE)
     _ret = !(sudo /usr/sbin/service docker start)
