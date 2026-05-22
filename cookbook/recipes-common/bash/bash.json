@@ -1,7 +1,7 @@
 {
     "name": "bash",
     "type": "config",
-    "priority": 0,
+    "priority": 1,
     "support": [
         "linux/amd64",
         "linux/arm64"
