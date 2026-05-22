@@ -34,7 +34,7 @@ fi
 export SLINT_STYLE="fluent-dark"
 
 # execute the Torizon WSL2 specific script
-boot.xsh
+sudo boot.xsh
 
 # check the return code from the boot
 if [ $? -eq 0 ] ; then

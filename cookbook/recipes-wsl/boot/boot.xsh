@@ -103,10 +103,10 @@ elif _user is None:
 
 # start docker service ??
 _ret = !(/usr/sbin/service docker status)
-if last_return_code() != 0:
+if _ret.returncode != 0:
     print(f"Starting Docker service ...", bg_color=BgColor.BLUE, color=Color.WHITE)
     _ret = !(sudo /usr/sbin/service docker start)
-    if last_return_code() != 0:
+    if _ret.returncode != 0:
         print(f"Not possible to start Docker service", color=Color.RED)
     else:
         print(f"Docker service OK", color=Color.GREEN)
